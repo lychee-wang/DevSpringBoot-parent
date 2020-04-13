@@ -1,0 +1,18 @@
+#端口号
+server:
+  port: 2222
+spring:
+  application:
+    name: DevSpringBoot-B
+#注册中心指向
+eureka:
+  instance:
+    instance-id: spring-cloud-portal-B
+    appname: ${spring.application.name}
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
+
+
+
+

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--本级项目-->
+    <groupId>org.example</groupId><!-- 项目唯一标识 -->
+    <artifactId>DevSpringBoot-parent</artifactId><!-- 项目名 -->
+    <packaging>pom</packaging><!-- 打包方式 （pom,war,jar） -->
+    <version>1.0-SNAPSHOT</version><!-- 版本 -->
+
+    <name>springboot</name><!-- 项目的名称， Maven 产生的文档用 -->
+    <description>Demo project for Spring Boot</description><!-- 项目的描述, Maven 产生的文档用 -->
+
+    <!-- 父级项目 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.7.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!--子级项目-->
+    <modules>
+        <module>DevSpringBoot-A</module>
+        <module>DevSpringBoot-B</module>
+        <module>DevSpringBoot-C</module>
+        <module>DevSpringBoot-D</module>
+        <module>DevSpringBoot-E</module>
+    </modules>
+
+    <!-- 属性设置 -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><!-- 编译字符编码为utf-8 -->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding><!-- 输出字符编码为UTF-8  -->
+        <java.version>1.8</java.version><!-- jdK版本 -->
+    </properties>
+
+    <!-- 依赖关系 -->
+    <dependencies>
+        <!-- web模块 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- thmeleaf模板引擎 -->
+       <!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>-->
+
+         <!--测试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--热部署依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- jsp -->
+        <!--<dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>-->
+
+        <!-- jsp -->
+
+        <!-- jpa(持久层) -->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>-->
+        <!-- mysql(数据库) -->
+        <!--<dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>-->
+    </dependencies>
+    <!--子工程可选择继承（分布式注册中心-Eureka springcloud）-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Dalston.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 编译 -->
+    <build>
+
+        <!-- 配置将哪些资源文件(静态文件/模板文件/mapper文件)加载到tomcat输出目录里 -->
+        <!--<resources>
+            <resource>
+                <directory>src/main/java</directory>&lt;!&ndash;java文件的路径&ndash;&gt;
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                &lt;!&ndash; <filtering>false</filtering>&ndash;&gt;
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>&lt;!&ndash;资源文件的路径&ndash;&gt;
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                &lt;!&ndash; <filtering>false</filtering>&ndash;&gt;
+            </resource>
+        </resources>-->
+
+        <!-- 插件 -->
+        <plugins>
+            <!-- maven插件 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork><!--必须添加这个配置-->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
